@@ -1,5 +1,5 @@
 body{
-    background-image: url("/public/pikachu.jpg");
+    background-image: url("pikachu.jpg");
     font-family: 'ProggySquareTT', sans-serif;
     font-size: large;
 }

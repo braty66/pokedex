@@ -13,9 +13,18 @@ class PokemonController{
 
     public function show()
     {
-
         $data['pokemones']= $this->pokemonModel->getPokemones();
-
         echo $this->printer->render( "view/pokemonView.html",$data);
     }
+
+    public function buscar(){
+        $filter = $_GET["busqueda"];
+        $data['pokemones'] = $this->pokemonModel->getBusquedaPokemones($filter);
+        if (empty($data['pokemones']) ){
+            $data['pokemones']= $this->pokemonModel->getPokemones();
+            echo $this->printer->render( "view/pokemonView.html",$data);
+        }
+        echo $this->printer->render( "view/pokemonView.html",$data);
+    }
+
 }
