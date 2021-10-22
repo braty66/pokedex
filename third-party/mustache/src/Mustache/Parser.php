@@ -273,12 +273,9 @@ class Mustache_Parser
      * @param array|null $parent
      * @param array      $token
      */
-    private function checkIfTokenIsAllowedInParent($parent, array $token)
-    {
-        if ($parent[Mustache_Tokenizer::TYPE] === Mustache_Tokenizer::T_PARENT) {
-            throw new Mustache_Exception_SyntaxException('Illegal content in < parent tag', $token);
-        }
-    }
+    private function checkIfTokenIsAllowedInParent($parent, array $token) {
+        if (isset($parent[Mustache_Tokenizer::TYPE]) === Mustache_Tokenizer::T_PARENT) {
+            throw new Mustache_Exception_SyntaxException('Illegal content in < parent tag', $token); } }
 
     /**
      * Split a tag name into name and filters.
