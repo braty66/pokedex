@@ -8,19 +8,19 @@ class Configuration{
         return new PresentacionesController( $this->createPresentacionesModel() , $this->createPrinter());
     }
 
-    public  function createCancionesController(){
-        require_once("controller/CancionesController.php");
-        return new CancionesController( $this->createCancionesModel(), $this->getLogger() , $this->createPrinter());
+    public  function createAltaPokemonController(){
+        require_once("controller/AltaPokemonController.php");
+        return new AltaPokemonController($this->getLogger() , $this->createPrinter());
     }
 
     public function createPokemonController(){
         require_once("controller/PokemonController.php");
         return new PokemonController( $this->createPrinter(),$this->createPokemonModel());
     }
-
-    public function createQuieroSerParteController(){
-        require_once("controller/QuieroSerParteController.php");
-        return new QuieroSerParteController( $this->createPrinter());
+    
+    public function createLoginController(){
+        require_once("controller/LoginController.php");
+        return new LoginController($this->getLogger() ,$this->createPrinter());
     }
 
     private  function createPokemonModel(){

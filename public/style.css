@@ -3,11 +3,15 @@ body{
     font-family: 'ProggySquareTT', sans-serif;
     font-size: large;
 }
+/*.formulario {*/
+/*    width: 33%;*/
+
+/*}*/
 .pokedex{
     font-family: 'Pokemon Solid', sans-serif;
 
 }
-h2{
+h2, h3{
     font-family: 'Amiga Forever', sans-serif;
 }
 .avatar{

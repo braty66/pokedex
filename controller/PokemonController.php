@@ -33,11 +33,13 @@ class PokemonController
     {
         $numero = $_GET["numero"];
         $data['pokemon'] = $this->pokemonModel->getDetallePokemon($numero);
-
-        echo("<pre>");
-        var_dump($data);
-        echo("</pre>");
+        
         echo $this->printer->render("view/pokemonDetalle.html", $data);
+        
+    }
+    
+    public function iniciarSesion(){
+        
         
     }
     
