@@ -75,6 +75,10 @@ COMMIT;
 CREATE TABLE IF NOT EXISTS Usuario(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50),
-    mail VARCHAR(50),
+    emailUsuario VARCHAR(50),
     password VARCHAR(50)
 );
+
+
+INSERT INTO Usuario (nombre, email, password) 
+	VALUES ('admin', 'admin@example.com', MD5(123456));
