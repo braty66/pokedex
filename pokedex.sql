@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `pokemon`
 --
 
-CREATE TABLE `pokemon` (
+CREATE TABLE IF NOT EXISTS `pokemon` (
   `id` int(8) NOT NULL,
   `numero` int(11) NOT NULL,
   `sprite` varchar(50) NOT NULL,
@@ -70,3 +70,11 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE TABLE IF NOT EXISTS Usuario(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    mail VARCHAR(50),
+    password VARCHAR(50)
+);
