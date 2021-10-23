@@ -21,6 +21,9 @@ class MyDatabase{
 
         if (mysqli_num_rows($databaseResult) <= 0)
             return [];
+    
+        if (mysqli_num_rows($databaseResult) == 1)
+            return mysqli_fetch_assoc($databaseResult);
 
         return mysqli_fetch_all($databaseResult,MYSQLI_ASSOC);
     }

@@ -5,11 +5,7 @@
 
     <h2 class="listatitle w3-left">Lista de pokémon</h2>
 
-    {{#noEncontrado}}
-    <div class="w3-panel w3-pale-red">
-        <p>No se encontro el Pokémon: {{noEncontrado}}</p>
-    </div>
-    {{/noEncontrado}}
+
     <form action="/pokemon/buscar" method="get">
 
         <input class="w3-input w3-round-xxlarge " type="text" name="busqueda"
@@ -26,8 +22,31 @@
             <th>Nombre</th>
             <th>Tipo 1</th>
             <th>Tipo 2</th>
+            {{#admin}}
+            <th>Acciones</th>
+            {{/admin}}
 
         </tr>
+        <!-- Si es admin -->
+        {{#admin}}
+        {{#pokemones}}
+        <tr class="w3-margin">
+            <td><img src="/public/{{sprite}}"></td>
+            <td>{{numero}}</td>
+            <td><a href="/pokemon/detalle?numero={{numero}}">{{nombre}}</a></td>
+            <td><img src="/public/{{tipo1}}"></td>
+            <td><img src="/public/{{tipo2}}"></td>
+            <td>
+                <a class="w3-button w3-round-xxlarge w3-right w3-margin w3-pale-red" href="pokemon/eliminar?id={{id}}">Eliminar</a>
+                <a class="w3-button w3-round-xxlarge w3-right w3-margin w3-pale-yellow " href="pokemon/modificar?id={{id}}">Modificar</a>
+            </td>
+
+        </tr>
+        {{/pokemones}}
+        {{/admin}}
+
+        <!-- Si no es admin -->
+        {{^admin}}
         {{#pokemones}}
         <tr>
             <td><img src="/public/{{sprite}}"></td>
@@ -35,9 +54,9 @@
             <td><a href="/pokemon/detalle?numero={{numero}}">{{nombre}}</a></td>
             <td><img src="/public/{{tipo1}}"></td>
             <td><img src="/public/{{tipo2}}"></td>
-            <td>x</td>
         </tr>
         {{/pokemones}}
+        {{/admin}}
         </tbody>
     </table>
 </div>

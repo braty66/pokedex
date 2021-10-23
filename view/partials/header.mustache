@@ -14,7 +14,6 @@
     <link href="http://fonts.cdnfonts.com/css/proggy-square" rel="stylesheet">
 
 
-
     <script src="https://kit.fontawesome.com/2b2506e7ac.js" crossorigin="anonymous"></script>
     <title>PokéDex</title>
 
@@ -24,20 +23,41 @@
 <div class="">
     <div class="w3-bar w3-opacity-min w3-light-grey w3-padding-8" id="myNavbar">
 
-        <a href="/" class="pokedex w3-bar-item w3-button w3-left w3-xlarge w3-hover-white w3-middle w3-margin  "> PokéDex <img src="/public/pokedex-48.png" class="avatar "> </a>
+        <a href="/" class="pokedex w3-bar-item w3-button w3-left w3-xlarge w3-hover-white w3-margin  ">
+            PokéDex <img src="/public/pokedex-48.png" class="avatar "> </a>
 
         <!-- Right-sided navbar links -->
-        <a href="/login" class="w3-bar-item w3-button w3-right w3-hide-small w3-large w3-margin w3-hover-none  "><img src="/public/pokeball-abierto.png"> Iniciar Sesion</a>
+
+        {{#admin}}
+            <a href="/login/logout"
+               class="w3-bar-item w3-button w3-right w3-hide-small w3-large w3-margin w3-hover-white"><img
+                    src="/public/pokeball-cerrado.png"> Cerrar Sesion</a>
+        {{/admin}}
+
+        {{^admin}}
+            <a href="/login"
+               class="w3-bar-item w3-button w3-right w3-hide-small w3-large w3-margin w3-hover-white"><img
+                    src="/public/pokeball-abierto.png"> Iniciar Sesion</a>
+        {{/admin}}
+
+        {{#mensaje}}
+            <div class="pokedex w3-margin w3-xlarge w3-middle {{class}}">
+                <p class="mensaje">{{mensaje}}</p>
+            </div>
+        {{/mensaje}}
+
 
 
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+           onclick="w3_open()">
             <i class="fa fa-bars"></i>
         </a>
     </div>
 </div>
 <!-- Sidebar on small screens when clicking the menu icon -->
-<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none"
+     id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
 
 </nav>
@@ -49,8 +69,10 @@
         var captionText = document.getElementById("caption");
         captionText.innerHTML = element.alt;
     }
+
     // Toggle between showing and hiding the sidebar when clicking the menu icon
     var mySidebar = document.getElementById("mySidebar");
+
     function w3_open() {
         if (mySidebar.style.display === 'block') {
             mySidebar.style.display = 'none';
@@ -58,6 +80,7 @@
             mySidebar.style.display = 'block';
         }
     }
+
     // Close the sidebar with the close button
     function w3_close() {
         mySidebar.style.display = "none";

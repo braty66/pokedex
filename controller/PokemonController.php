@@ -15,6 +15,17 @@ class PokemonController
     public function show()
     {
         $data['pokemones'] = $this->pokemonModel->getPokemones();
+        
+        //Me fijo si estoy logueado
+        if (isset($_SESSION["email"])) {
+            $data["admin"] = TRUE;
+        }
+        
+        //muestro si hay mensajes
+        $data["mensaje"] = $_SESSION["mensaje"];
+        unset($_SESSION["mensaje"]);
+        
+        
         echo $this->printer->render("view/pokemonView.html", $data);
     }
     
@@ -24,8 +35,10 @@ class PokemonController
         $data['pokemones'] = $this->pokemonModel->getBusquedaPokemones($filter);
         if (empty($data['pokemones'])) {
             $data['pokemones'] = $this->pokemonModel->getPokemones();
-            $data['noEncontrado'] = $filter;
+            $data['mensaje']['class'] = "w3-pale-red";
+            $data['mensaje']['mensaje'] = "No se encontro al poquemon: " . $filter;
         }
+        
         echo $this->printer->render("view/pokemonView.html", $data);
     }
     
@@ -38,9 +51,9 @@ class PokemonController
         
     }
     
-    public function iniciarSesion(){
-        
-        
+    function modificar()
+    {
+        echo $this->printer->render("view/altaPokemon.html");
     }
     
 }
