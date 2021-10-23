@@ -1,15 +1,22 @@
 {{> header}}
-<div class="w3-container w3-content w3-center w3-white w3-margin-top w3-margin-bottom" style="max-width:800px" >
+<div class="w3-container w3-content w3-center w3-white w3-margin-top w3-margin-bottom" style="max-width:800px">
 
     <h2 class="listatitle w3-left">Lista de pokémon</h2>
 
-    <form action="pokemon/buscar" method="get">
+    {{#noEncontrado}}
+    <div class="w3-panel w3-pale-red">
+        <p>No se encontro el Pokémon: {{noEncontrado}}</p>
+    </div>
+    {{/noEncontrado}}
+    <form action="/pokemon/buscar" method="get">
 
-    <input class="w3-input w3-round-xxlarge " type="text" name="busqueda" placeholder="Ingrese tipo, nombre o numero ^.^">
+        <input class="w3-input w3-round-xxlarge " type="text" name="busqueda"
+               placeholder="Ingrese tipo, nombre o numero ^.^">
         <button type="submit" class="w3-button w3-pale-red w3-round-xxlarge w3-right w3-margin">Buscar</button>
 
     </form>
-    <table class=" w3-table-all w3-hoverable w3-centered w3-margin-bottom " >
+
+    <table class=" w3-table-all w3-hoverable w3-centered w3-margin-bottom ">
         <tbody>
         <tr class="w3-black">
             <th>Sprite</th>
@@ -21,11 +28,12 @@
         </tr>
         {{#pokemones}}
         <tr>
-            <td><img src="public/{{sprite}}"></td>
+            <td><img src="/public/{{sprite}}"></td>
             <td>{{numero}}</td>
-            <td>{{nombre}}</td>
-            <td><img src="public/{{tipo1}}"></td>
-            <td><img src="public/{{tipo2}}"></td>
+            <td><a href="/pokemon/detalle?numero={{numero}}">{{nombre}}</a></td>
+            <td><img src="/public/{{tipo1}}"></td>
+            <td><img src="/public/{{tipo2}}"></td>
+            <td>x</td>
         </tr>
         {{/pokemones}}
         </tbody>

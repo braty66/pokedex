@@ -1,0 +1,11 @@
+{{> header}}
+<div class="w3-container w3-content w3-center w3-white w3-margin-top w3-margin-bottom" style="max-width:800px">
+{{#pokemon}}
+    <h2 class="listatitle w3-left">{{nombre}} <img src="/public/{{sprite}}"></h2>
+     <p>{{descripcion}}</p>
+    <img src="/public/{{imagen}}">
+    <img src="/public/{{tipo1}}">
+    <img src="/public/{{tipo2}}">
+    {{/pokemon}}
+</div>
+{{> footer}}

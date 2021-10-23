@@ -21,4 +21,9 @@ class PokemonModel
           numero LIKE '%". $filter ."%'";
         return $this->database->query($query);
     }
+    public function getDetallePokemon($numero){
+        $query = "SELECT * FROM pokemon 
+            WHERE  numero = $numero";
+        return $this->database->query($query);
+    }
 }
