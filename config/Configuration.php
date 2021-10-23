@@ -2,11 +2,12 @@
 class Configuration{
 
     private $config;
-
-    public  function createPresentacionesController(){
-        require_once("controller/PresentacionesController.php");
-        return new PresentacionesController( $this->createPresentacionesModel() , $this->createPrinter());
+    
+    public function createPokemonAdminController(){
+        require_once ("controller/PokemonAdminController.php");
+        return new PokemonAdminController($this->createPrinter(),$this->createPokemonModel());
     }
+   
 
     public  function createAltaPokemonController(){
         require_once("controller/AltaPokemonController.php");
@@ -20,13 +21,18 @@ class Configuration{
     
     public function createLoginController(){
         require_once("controller/LoginController.php");
-        return new LoginController($this->getLogger() ,$this->createPrinter());
+        return new LoginController($this->getLogger() ,$this->createPrinter(),$this->usuarioModel());
     }
 
     private  function createPokemonModel(){
         require_once("model/PokemonModel.php");
         $database = $this->getDatabase();
         return new PokemonModel($database);
+    }
+    private  function usuarioModel(){
+        require_once("model/UsuarioModel.php");
+        $database = $this->getDatabase();
+        return new UsuarioModel($database);
     }
 
     private  function createPresentacionesModel(){

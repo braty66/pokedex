@@ -8,6 +8,10 @@ body{
     width: 33%;
 
 }
+div textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+}
 .pokedex{
     font-family: 'Pokemon Solid', sans-serif;
 
