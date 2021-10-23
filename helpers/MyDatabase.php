@@ -5,6 +5,7 @@ class MyDatabase{
 
     public function __construct($servername, $username, $password, $dbname){
         $this->connection = mysqli_connect($servername, $username,$password, $dbname);
+        $this->connection->set_charset("utf8");
 
         if (!$this->connection) {
             die("Connection failed: " . mysqli_connect_error());

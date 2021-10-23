@@ -3,25 +3,30 @@
 class PokemonModel
 {
     private $database;
-
-    public function __construct($database){
+    
+    public function __construct($database)
+    {
         $this->database = $database;
     }
-
-    public function getPokemones(){
+    
+    public function getPokemones()
+    {
         return $this->database->query("SELECT * FROM pokemon ");
     }
-
-    public function getBusquedaPokemones($filter){
-
+    
+    public function getBusquedaPokemones($filter)
+    {
+        
         $query = "SELECT * FROM pokemon
-         WHERE nombre LIKE '%". $filter ."%'OR
-          tipo1 LIKE '%". $filter ."%'OR 
-          tipo2 LIKE '%". $filter ."%' OR
-          numero LIKE '%". $filter ."%'";
+         WHERE nombre LIKE '%" . $filter . "%'OR
+          tipo1 LIKE '%" . $filter . "%'OR
+          tipo2 LIKE '%" . $filter . "%' OR
+          numero LIKE '%" . $filter . "%'";
         return $this->database->query($query);
     }
-    public function getDetallePokemon($numero){
+    
+    public function getDetallePokemon($numero)
+    {
         $query = "SELECT * FROM pokemon 
             WHERE  numero = $numero";
         return $this->database->query($query);
