@@ -22,8 +22,10 @@ class MustachePrinter
         }
         
         //muestro si hay mensajes
-        $data["mensaje"] = $_SESSION["mensaje"];
-        unset($_SESSION["mensaje"]);
+        if(isset($_SESSION["mensaje"])) {
+            $data["mensaje"] = $_SESSION["mensaje"];
+            unset($_SESSION["mensaje"]);
+        }
         
         $contentAsString = file_get_contents($template);
         return $this->mustache->render($contentAsString, $data);
