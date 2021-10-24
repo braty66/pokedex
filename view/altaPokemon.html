@@ -1,67 +1,82 @@
 {{> header}}
-<div id="registrarme" class="w3-card-4 w3-auto w3-content w3-margin w3-white">
+<div id="registrarme" class="w3-container w3-content w3-white w3-margin-top w3-margin-bottom">
     <div class="w3-container w3-pale-yellow ">
         <h3>Ingresa los Datos del Pokemon <img src="/public/ingresarPokemon.png"></h3>
     </div>
-    <div class="w3-container">
+    <div class="w3-container w3-content">
         <!-- TODO Validar que las contraseñas sean iguales y que sea un mail valido con JS-->
-        <form class="w3-container" method="post" name="registro" action="/Registrarme/registro">
+        <form class="w3-container" method="post" name="registro" action="">
             <label for="numero">Numero</label>
-            <input class="w3-input" type="number" name="nombre" id="numero" required>
+            <input class="w3-input" type="number" name="numero" id="numero" required
+                   value="{{#pokemon}}{{numero}}{{/pokemon}}">
             <label for="nombre">Nombre</label>
-            <input class="w3-input" type="text" name="nombre" id="nombre" required>
-            <label for="tipo1"> Seleccione Tipo 1 </label>
+            <input class="w3-input" type="text" name="nombre" id="nombre" required
+                   value="{{#pokemon}}{{nombre}}{{/pokemon}}">
+            <label for="tipo1"> Seleccione tipo 1 </label>
             <select class="w3-select" name="tipo1" id="tipo1" required>
-                <option value="Tipo_acero.gif">acero</option>
-                <option value="Tipo_agua.gif">agua</option>
-                <option value="Tipo_bicho.gif">bicho</option>
-                <option value="Tipo_dragon.gif">drágon</option>
-                <option value="Tipo_electrico.gif">eléctrico</option>
-                <option value="Tipo_fantasma.gif">fantasma</option>
-                <option value="Tipo_fuego.gif">fuego</option>
-                <option value="Tipo_hada.gif">hada</option>
-                <option value="Tipo_hielo.gif">hielo</option>
-                <option value="Tipo_lucha.gif">lucha</option>
-                <option value="Tipo_normal.gif">normal</option>
-                <option value="Tipo_planta.gif">planta</option>
-                <option value="Tipo_psíquico.gif">psíquico</option>
-                <option value="Tipo_roca.gif">roca</option>
-                <option value="Tipo_siniestro.gif">siniestro</option>
-                <option value="Tipo_tierra.gif">tierra</option>
+                {{#pokemon}}
+                <option value="{{tipo1}}" selected hidden></option>
+                {{/pokemon}}
+                <option value="tipo_acero.gif">acero</option>
+                <option value="tipo_agua.gif">agua</option>
+                <option value="tipo_bicho.gif">bicho</option>
+                <option value="tipo_dragon.gif">drágon</option>
+                <option value="tipo_electrico.gif">eléctrico</option>
+                <option value="tipo_fantasma.gif">fantasma</option>
+                <option value="tipo_fuego.gif">fuego</option>
+                <option value="tipo_hada.gif">hada</option>
+                <option value="tipo_hielo.gif">hielo</option>
+                <option value="tipo_lucha.gif">lucha</option>
+                <option value="tipo_normal.gif">normal</option>
+                <option value="tipo_planta.gif">planta</option>
+                <option value="tipo_psíquico.gif">psíquico</option>
+                <option value="tipo_roca.gif">roca</option>
+                <option value="tipo_siniestro.gif">siniestro</option>
+                <option value="tipo_tierra.gif">tierra</option>
                 <option value="tipo_veneno.gif">veneno</option>
-                <option value="Tipo_volador.gif">volador</option>
+                <option value="tipo_volador.gif">volador</option>
             </select>
-            <label for="tipo2">Seleccione Tipo 2 (no requerido)</label>
+            <label for="tipo2">Seleccione tipo 2 (no requerido)</label>
             <select class="w3-select" name="tipo2" id="tipo2" required>
-                <option value="Tipo_acero.gif">acero</option>
-                <option value="Tipo_agua.gif">agua</option>
-                <option value="Tipo_bicho.gif">bicho</option>
-                <option value="Tipo_dragon.gif">drágon</option>
-                <option value="Tipo_electrico.gif">eléctrico</option>
-                <option value="Tipo_fantasma.gif">fantasma</option>
-                <option value="Tipo_fuego.gif">fuego</option>
-                <option value="Tipo_hada.gif">hada</option>
-                <option value="Tipo_hielo.gif">hielo</option>
-                <option value="Tipo_lucha.gif">lucha</option>
-                <option value="Tipo_normal.gif">normal</option>
-                <option value="Tipo_planta.gif">planta</option>
-                <option value="Tipo_psíquico.gif">psíquico</option>
-                <option value="Tipo_roca.gif">roca</option>
-                <option value="Tipo_siniestro.gif">siniestro</option>
-                <option value="Tipo_tierra.gif">tierra</option>
+                {{#pokemon}}
+                <option value="{{tipo2}}" selected hidden></option>
+                {{/pokemon}}
+                <option value="tipo_acero.gif">acero</option>
+                <option value="tipo_agua.gif">agua</option>
+                <option value="tipo_bicho.gif">bicho</option>
+                <option value="tipo_dragon.gif">drágon</option>
+                <option value="tipo_electrico.gif">eléctrico</option>
+                <option value="tipo_fantasma.gif">fantasma</option>
+                <option value="tipo_fuego.gif">fuego</option>
+                <option value="tipo_hada.gif">hada</option>
+                <option value="tipo_hielo.gif">hielo</option>
+                <option value="tipo_lucha.gif">lucha</option>
+                <option value="tipo_normal.gif">normal</option>
+                <option value="tipo_planta.gif">planta</option>
+                <option value="tipo_psíquico.gif">psíquico</option>
+                <option value="tipo_roca.gif">roca</option>
+                <option value="tipo_siniestro.gif">siniestro</option>
+                <option value="tipo_tierra.gif">tierra</option>
                 <option value="tipo_veneno.gif">veneno</option>
-                <option value="Tipo_volador.gif">volador</option>
+                <option value="tipo_volador.gif">volador</option>
             </select>
             <p>Descripción</p>
             <div class="w3-container">
-            <textarea class="w3-round" name="descripcion" maxlength="2000" cols="120" placeholder="La desrcipcion se escribe aquí..."></textarea>
+                <textarea class="w3-round" name="descripcion" id="descripcion" maxlength="2000" cols="120" rows="10"
+                          placeholder="La desrcipcion se escribe aquí...">{{#pokemon}}{{descripcion}}{{/pokemon}}</textarea>
             </div>
-                <br>
-            <label for="imagen">Imagen</label>
-            <input class="w3-input w3-margin-bottom" type="file" name="imagen" id="imagen" required>
-            <label for="sprite">Sprite</label>
-            <input class="w3-input " type="file" name="sprite" id="sprite" required>
+            <br>
+            <label for="imagen">Imagen{{#pokemon}} (Actual: {{sprite}}){{/pokemon}}</label>
+            <input class="w3-input w3-margin-bottom" type="file" name="imagen" id="imagen"
+                   value="{{#pokemon}}{{imagen}}{{/pokemon}}">
+            <label for="sprite">Sprite{{#pokemon}} (Actual: {{sprite}}){{/pokemon}}</label>
+            <input class="w3-input " type="file" name="sprite" id="sprite" >
+            {{^pokemon}}
             <button class="w3-button w3-pale-red w3-round-xxlarge w3-right w3-margin">Registrar</button>
+            {{/pokemon}}
+            {{#pokemon}}
+            <button class="w3-button w3-pale-red w3-round-xxlarge w3-right w3-margin">Modificar</button>
+            {{/pokemon}}
         </form>
 
     </div>

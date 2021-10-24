@@ -12,11 +12,9 @@
     <link href="http://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
     <link href="http://fonts.cdnfonts.com/css/amiga-forever" rel="stylesheet">
     <link href="http://fonts.cdnfonts.com/css/proggy-square" rel="stylesheet">
-
-
+    <link rel="icon" href="/public/pokeball-cerrado.png">
     <script src="https://kit.fontawesome.com/2b2506e7ac.js" crossorigin="anonymous"></script>
     <title>PokéDex</title>
-
 </head>
 <body>
 <!-- Navbar (sit on top) -->
@@ -29,9 +27,13 @@
         <!-- Right-sided navbar links -->
 
         {{#admin}}
+
             <a href="/login/logout"
-               class="w3-bar-item w3-button w3-right w3-hide-small w3-large w3-margin w3-hover-white"><img
+               class="w3-bar-item w3-button w3-right w3-hide-small w3-large w3-margin-bottom w3-margin-top w3-hover-white"><img
                     src="/public/pokeball-cerrado.png"> Cerrar Sesion</a>
+            <a href="/altaPokemon"
+               class="w3-bar-item w3-button w3-right w3-hide-small w3-large w3-margin-bottom w3-margin-top w3-hover-white"><img
+                    src="/public/pokedex-48.png"> Nuevo pokemon</a>
         {{/admin}}
 
         {{^admin}}

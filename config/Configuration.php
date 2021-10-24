@@ -11,7 +11,7 @@ class Configuration{
 
     public  function createAltaPokemonController(){
         require_once("controller/AltaPokemonController.php");
-        return new AltaPokemonController($this->getLogger() , $this->createPrinter());
+        return new AltaPokemonController($this->createPokemonModel(), $this->getLogger() , $this->createPrinter());
     }
 
     public function createPokemonController(){

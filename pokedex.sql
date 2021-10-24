@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `pokemon` (
   `id` int(8) NOT NULL,
-  `numero` int(11) NOT NULL,
+  `numero` int(11) NOT NULL unique ,
   `sprite` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `imagen` varchar(50) NOT NULL,

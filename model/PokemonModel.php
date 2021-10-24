@@ -27,8 +27,28 @@ class PokemonModel
     
     public function getDetallePokemon($numero)
     {
-        $query = "SELECT * FROM pokemon 
-            WHERE  numero = $numero";
+        $query = "SELECT * FROM pokemon WHERE  numero = $numero";
         return $this->database->query($query);
+    }
+    
+    public function createPokemon($datos)
+    {
+        $query = "INSERT INTO pokemon (numero, sprite, nombre, imagen, tipo1, tipo2, descripcion)
+            VALUES ('" . $datos["numero"] .
+            "', '" . $datos["sprite"] .
+            "', '" . $datos["nombre"] .
+            "', '" . $datos["imagen"] .
+            "', '" . $datos["tipo1"] .
+            "', '" . $datos["tipo2"] .
+            "', '" . $datos["descripcion"] .
+            "');";
+        
+        return $this->database->insert($query);
+        
+    }
+    
+    public function updatePokemon($datos)
+    {
+    
     }
 }
