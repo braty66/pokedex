@@ -42,4 +42,9 @@ class MyDatabase
         
         return $databaseResult;
     }
+    
+    public function update($sql)
+    {
+        return $this->insert($sql);
+    }
 }

@@ -49,6 +49,53 @@ class PokemonModel
     
     public function updatePokemon($datos)
     {
-    
+        $query = "UPDATE pokemon SET ";
+        $flag = FALSE;
+        
+        if (isset($datos["sprite"])) {
+            $query .= "sprite = '" . $datos["sprite"] . "'";
+            $flag = TRUE;
+        }
+        
+        if (isset($datos["nombre"])) {
+            if ($flag)
+                $query .= ",";
+            
+            $query .= "nombre = '" . $datos["nombre"] . "'";
+            $flag = TRUE;
+        }
+        
+        if (isset($datos["imagen"])) {
+            if ($flag)
+                $query .= ",";
+            $query .= "imagen = '" . $datos["imagen"] . "'";
+            $flag = TRUE;
+        }
+        
+        if (isset($datos["tipo1"])) {
+            if ($flag)
+                $query .= ",";
+            $query .= "tipo1 = '" . $datos["tipo1"] . "'";
+            $flag = TRUE;
+        }
+        
+        if (isset($datos["tipo2"])) {
+            if ($flag)
+                $query .= ",";
+            $query .= "tipo2 = '" . $datos["tipo2"] . "'";
+            $flag = TRUE;
+        }
+        
+        if (isset($datos["descripcion"])) {
+            if ($flag)
+                $query .= ",";
+            $query .= "descripcion = '" . $datos["descripcion"] . "'";
+            
+        }
+        
+        $query .= " WHERE numero = " . $datos["numero"] . ";";
+        
+        
+        return $this->database->update($query);
     }
 }
