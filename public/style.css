@@ -14,12 +14,25 @@ div textarea {
     max-width: 100%;
 }
 
+
+
 .pokedex {
     font-family: 'Pokemon Solid', sans-serif;
 
 }
 
-h2, h3 {
+
+.detallePokemon{
+    border: 10px solid palegoldenrod;
+}
+
+.descripcionDetalle{
+    /*font-family: Arial;*/
+    font-size: small;
+    text-align: justify;
+}
+
+h2, h3 , h5 {
     font-family: 'Amiga Forever', sans-serif;
 }
 
@@ -32,6 +45,11 @@ h2, h3 {
     background: rgb(240, 238, 122);
     background: linear-gradient(0deg, rgba(240, 238, 122, 0.9164040616246498) 9%, rgba(255, 255, 255, 1) 61%);
 }
+.fisionomia{
+    background: rgb(240, 238, 122);
+    background: linear-gradient(0deg, rgba(240, 238, 122, 0.9164040616246498) 9%, rgba(255, 255, 255, 1) 61%);
+
+}
 
 .mensaje {
     padding-bottom: 0.5em;
@@ -42,9 +60,12 @@ td{
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+hr {
+    border-top: 2px solid palegoldenrod;
 }
