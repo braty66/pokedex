@@ -11,7 +11,8 @@ class UsuarioModel
 
     public function getUsuario($email, $pass)
     {
-        $SQL = "SELECT * FROM Usuario WHERE email = \"$email\" AND password = \"$pass\"";
+        $passHash = md5($pass);
+        $SQL = "SELECT * FROM Usuario WHERE email = \"$email\" AND password = \"$passHash\"";
         return $this->database->query($SQL);
     }
 }

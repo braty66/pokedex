@@ -21,7 +21,7 @@ class LoginController
     
     function login()
     {
-        $login = $this->usuarioModel->getUsuario($_POST["email"], md5($_POST["pass"]));
+        $login = $this->usuarioModel->getUsuario($_POST["email"], $_POST["pass"]);
         if ($login) {
             $_SESSION["id"] = $login["id"];
             $_SESSION["nombre"] = $login["nombre"];
