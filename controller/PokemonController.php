@@ -85,5 +85,29 @@ class PokemonController
             echo $this->printer->render("view/altaPokemon.html", $data);
         }
     }
-    
+    public function delete()
+    {
+
+        $numero = $_GET['numero'];
+
+        if ($this->pokemonModel->deletePokemon($numero)) {
+            $_SESSION["mensaje"]["mensaje"] = "Pokemon eliminado con exito";
+            $_SESSION["mensaje"]["class"] = "w3-pale-green ";
+            header('Location: /');
+        } else {
+            $_SESSION["mensaje"]["mensaje"] = "Error al eliminar el pokemon";
+            $_SESSION["mensaje"]["class"] = "w3-pale-red ";
+            header('Location: /');
+
+
+        }
+    }
+        public function registrar()
+        {
+
+        }
+
+
+
+
 }

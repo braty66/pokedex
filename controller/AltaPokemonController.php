@@ -18,8 +18,10 @@ class AltaPokemonController
     
     function show()
     {
-        
+
+
         if (isset($_POST["numero"])) {
+
             $datos["numero"] = $_POST["numero"];
             $datos["nombre"] = $_POST["nombre"];
             $datos["tipo1"] = $_POST["tipo1"];
@@ -27,7 +29,6 @@ class AltaPokemonController
             $datos["descripcion"] = $_POST["descripcion"];
             $datos["imagen"] = $_POST["imagen"];
             $datos["sprite"] = $_POST["sprite"];
-            
             if ($this->pokemonModel->createPokemon($datos)) {
                 $_SESSION["mensaje"]["mensaje"] = "Pokemon creado con exito";
                 $_SESSION["mensaje"]["class"] = "w3-pale-green ";

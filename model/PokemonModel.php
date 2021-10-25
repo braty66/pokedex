@@ -98,4 +98,10 @@ class PokemonModel
         
         return $this->database->update($query);
     }
+    public function deletePokemon($numero){
+        $query="DELETE FROM pokemon WHERE numero = $numero";
+
+        return $this->database->delete($query);
+
+    }
 }

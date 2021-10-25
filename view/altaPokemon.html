@@ -5,7 +5,8 @@
     </div>
     <div class="w3-container w3-content">
         <!-- TODO Validar que las contraseñas sean iguales y que sea un mail valido con JS-->
-        <form class="w3-container" method="post" name="registro" action="">
+        <form class="w3-container" method="post" name="registro" enctype="multipart/form-data"
+              action="">
             <label for="numero">Numero</label>
             <input class="w3-input" type="number" name="numero" id="numero" required {{#pokemon}}disabled {{/pokemon}}
             value="{{#pokemon}}{{numero}}{{/pokemon}}">
