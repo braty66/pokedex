@@ -35,7 +35,7 @@
             <td>{{numero}}</td>
             <td><a href="/pokemon/detalle?numero={{numero}}">{{nombre}}</a></td>
             <td><img src="/public/{{tipo1}}"></td>
-            <td><img src="/public/{{tipo2}}"></td>
+             <td>{{#tipo2}}<img src="/public/{{tipo2}}">{{/tipo2}}</td>
             <td>
                 <a class="w3-button w3-round-xxlarge w3-right w3-margin w3-pale-red" href="/pokemon/delete?numero={{numero}}">Eliminar</a>
                 <a class="w3-button w3-round-xxlarge w3-right w3-margin w3-pale-yellow " href="/pokemon/modificar?numero={{numero}}">Modificar</a>

@@ -30,7 +30,7 @@
                 <option value="tipo_lucha.gif">lucha</option>
                 <option value="tipo_normal.gif">normal</option>
                 <option value="tipo_planta.gif">planta</option>
-                <option value="tipo_psíquico.gif">psíquico</option>
+                <option value="tipo_psiquico.gif">psíquico</option>
                 <option value="tipo_roca.gif">roca</option>
                 <option value="tipo_siniestro.gif">siniestro</option>
                 <option value="tipo_tierra.gif">tierra</option>
@@ -38,10 +38,11 @@
                 <option value="tipo_volador.gif">volador</option>
             </select>
             <label for="tipo2">Seleccione tipo 2 (no requerido)</label>
-            <select class="w3-select" name="tipo2" id="tipo2" required>
+            <select class="w3-select" name="tipo2" id="tipo2" >
                 {{#pokemon}}
                 <option value="{{tipo2}}" selected hidden></option>
                 {{/pokemon}}
+                <option ></option>
                 <option value="tipo_acero.gif">acero</option>
                 <option value="tipo_agua.gif">agua</option>
                 <option value="tipo_bicho.gif">bicho</option>

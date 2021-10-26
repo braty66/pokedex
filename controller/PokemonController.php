@@ -17,7 +17,7 @@ class PokemonController
     public function show()
     {
         $data['pokemones'] = $this->pokemonModel->getPokemones();
-        
+
         echo $this->printer->render("view/pokemonView.html", $data);
     }
     
@@ -28,7 +28,7 @@ class PokemonController
         if (empty($data['pokemones'])) {
             $data['pokemones'] = $this->pokemonModel->getPokemones();
             $data['mensaje']['class'] = "w3-pale-red";
-            $data['mensaje']['mensaje'] = "No se encontro al poquemon: " . $filter;
+            $data['mensaje']['mensaje'] = "No se encontro al pokémon: " . $filter;
         }
         
         echo $this->printer->render("view/pokemonView.html", $data);
