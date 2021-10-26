@@ -6,13 +6,15 @@ class AltaPokemonController
     private $log;
     private $printer;
     private $pokemonModel;
+    private $upLoadFile;
     
     
-    public function __construct($pokemonModel, $logger, $printer)
+    public function __construct($pokemonModel, $logger, $printer,$upLoadFile)
     {
         $this->pokemonModel = $pokemonModel;
         $this->log = $logger;
         $this->printer = $printer;
+        $this->upLoadFile=$upLoadFile;
     }
     
     
@@ -27,8 +29,16 @@ class AltaPokemonController
             $datos["tipo1"] = $_POST["tipo1"];
             $datos["tipo2"] = $_POST["tipo2"];
             $datos["descripcion"] = $_POST["descripcion"];
-            $datos["imagen"] = $_POST["imagen"];
-            $datos["sprite"] = $_POST["sprite"];
+            $datos["imagen"] = time()."_imagen_".$_FILES["imagen"]["name"];
+            if (!$this->upLoadFile->guardarImagen($_FILES["imagen"],$datos["imagen"])){
+                echo $this->printer->render("view/altaPokemon.html");
+                die();
+            }
+            $datos["sprite"] = time()."_sprite_".$_FILES["sprite"]["name"];
+            if (!$this->upLoadFile->guardarImagen($_FILES["sprite"],$datos["sprite"])){
+                echo $this->printer->render("view/altaPokemon.html");
+                die();
+            }
             if ($this->pokemonModel->createPokemon($datos)) {
                 $_SESSION["mensaje"]["mensaje"] = "Pokemon creado con exito";
                 $_SESSION["mensaje"]["class"] = "w3-pale-green ";

@@ -60,11 +60,11 @@ td{
 }
 
 .footer {
-            position: fixed;
+            position: relative;
             left: 0;
             bottom: 0;
             width: 100%;
-            text-align: center;
+
         }
 hr {
     border-top: 2px solid palegoldenrod;

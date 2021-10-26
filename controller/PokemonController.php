@@ -5,11 +5,13 @@ class PokemonController
     
     private $pokemonModel;
     private $printer;
+    private $upLoadFile;
     
-    public function __construct($printer, $pokemonModel)
+    public function __construct($printer, $pokemonModel,$upLoadFile)
     {
         $this->pokemonModel = $pokemonModel;
         $this->printer = $printer;
+        $this->upLoadFile = $upLoadFile;
     }
     
     public function show()
@@ -59,12 +61,20 @@ class PokemonController
             if (isset($_POST["descripcion"])) {
                 $datos["descripcion"] = $_POST["descripcion"];
             }
-            if (isset($_POST["imagen"])) {
-                $datos["imagen"] = $_POST["imagen"];
+            if (isset($_FILES["imagen"])) {
+                $datos["imagen"] = time()."_imagen_".$_FILES["imagen"]["name"];
+                if (!$this->upLoadFile->guardarImagen($_FILES["imagen"],$datos["imagen"])){
+                    echo $this->printer->render("view/altaPokemon.html");
+                    die();
+                }
             }
             
-            if (isset($datos["sprite"])) {
-                $datos["sprite"] = $_POST["sprite"];
+            if (isset($_FILES["sprite"])) {
+                $datos["sprite"] = time()."_sprite_".$_FILES["sprite"]["name"];
+                if (!$this->upLoadFile->guardarImagen($_FILES["sprite"],$datos["sprite"])){
+                    echo $this->printer->render("view/altaPokemon.html");
+                    die();
+                }
             }
             
             if ($this->pokemonModel->updatePokemon($datos)) {
@@ -102,10 +112,7 @@ class PokemonController
 
         }
     }
-        public function registrar()
-        {
-
-        }
+        
 
 
 

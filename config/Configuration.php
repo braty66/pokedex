@@ -11,12 +11,12 @@ class Configuration{
 
     public  function createAltaPokemonController(){
         require_once("controller/AltaPokemonController.php");
-        return new AltaPokemonController($this->createPokemonModel(), $this->getLogger() , $this->createPrinter());
+        return new AltaPokemonController($this->createPokemonModel(), $this->getLogger() , $this->createPrinter(),$this->createUpLoadFile());
     }
 
     public function createPokemonController(){
         require_once("controller/PokemonController.php");
-        return new PokemonController( $this->createPrinter(),$this->createPokemonModel());
+        return new PokemonController( $this->createPrinter(),$this->createPokemonModel(),$this->createUpLoadFile());
     }
     
     public function createLoginController(){
@@ -62,6 +62,10 @@ class Configuration{
     public function createRouter($defaultController, $defaultAction){
         include_once("helpers/Router.php");
         return new Router($this,$defaultController,$defaultAction);
+    }
+    public function  createUpLoadFile(){
+        include_once ("helpers/UpLoadFile.php");
+        return new UpLoadFile();
     }
 
     private function createPrinter(){
