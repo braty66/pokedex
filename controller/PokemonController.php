@@ -7,7 +7,7 @@ class PokemonController
     private $printer;
     private $upLoadFile;
     
-    public function __construct($printer, $pokemonModel,$upLoadFile)
+    public function __construct($printer, $pokemonModel, $upLoadFile)
     {
         $this->pokemonModel = $pokemonModel;
         $this->printer = $printer;
@@ -17,7 +17,7 @@ class PokemonController
     public function show()
     {
         $data['pokemones'] = $this->pokemonModel->getPokemones();
-
+        
         echo $this->printer->render("view/pokemonView.html", $data);
     }
     
@@ -45,6 +45,8 @@ class PokemonController
     
     function modificar()
     {
+        
+        //Si tengo post, hago la modificacion
         if (isset($_POST["nombre"])) {
             
             $datos["numero"] = $_GET["numero"];
@@ -61,19 +63,18 @@ class PokemonController
             if (isset($_POST["descripcion"])) {
                 $datos["descripcion"] = $_POST["descripcion"];
             }
-            if (isset($_FILES["imagen"])) {
-                $datos["imagen"] = time()."_imagen_".$_FILES["imagen"]["name"];
-                if (!$this->upLoadFile->guardarImagen($_FILES["imagen"],$datos["imagen"])){
-                    echo $this->printer->render("view/altaPokemon.html");
-                    die();
+            
+            if ($_FILES && isset($_FILES["imagen"]) && $_FILES["imagen"]["size"] != 0) {
+                $datos["imagen"] = time() . "_imagen_" . $_FILES["imagen"]["name"];
+                if (!$this->upLoadFile->guardarImagen($_FILES["imagen"], $datos["imagen"])) {
+                    $this->falla();
                 }
             }
             
-            if (isset($_FILES["sprite"])) {
-                $datos["sprite"] = time()."_sprite_".$_FILES["sprite"]["name"];
-                if (!$this->upLoadFile->guardarImagen($_FILES["sprite"],$datos["sprite"])){
-                    echo $this->printer->render("view/altaPokemon.html");
-                    die();
+            if ($_FILES && isset($_FILES["sprite"]) && $_FILES["sprite"]["size"] != 0) {
+                $datos["sprite"] = time() . "_sprite_" . $_FILES["sprite"]["name"];
+                if (!$this->upLoadFile->guardarImagen($_FILES["sprite"], $datos["sprite"])) {
+                    $this->falla();
                 }
             }
             
@@ -84,22 +85,20 @@ class PokemonController
             } else {
                 $_SESSION["mensaje"]["mensaje"] = "Error al actualizar el pokemon";
                 $_SESSION["mensaje"]["class"] = "w3-pale-red ";
-                $numero = $_GET["numero"];
-                $data['pokemon'] = $this->pokemonModel->getDetallePokemon($numero);
-                echo $this->printer->render("view/altaPokemon.html");
+                $this->falla();
             }
             
-        } else {
-            $numero = $_GET["numero"];
-            $data['pokemon'] = $this->pokemonModel->getDetallePokemon($numero);
-            echo $this->printer->render("view/altaPokemon.html", $data);
+        } //Si no, llamo a la vista con los datos
+        else {
+            $this->falla();
         }
     }
+    
     public function delete()
     {
-
+        
         $numero = $_GET['numero'];
-
+        
         if ($this->pokemonModel->deletePokemon($numero)) {
             $_SESSION["mensaje"]["mensaje"] = "Pokemon eliminado con exito";
             $_SESSION["mensaje"]["class"] = "w3-pale-green ";
@@ -108,13 +107,17 @@ class PokemonController
             $_SESSION["mensaje"]["mensaje"] = "Error al eliminar el pokemon";
             $_SESSION["mensaje"]["class"] = "w3-pale-red ";
             header('Location: /');
-
-
+            
+            
         }
     }
-        
-
-
-
-
+    
+    private function falla()
+    {
+        $numero = $_GET["numero"];
+        $data['pokemon'] = $this->pokemonModel->getDetallePokemon($numero);
+        echo $this->printer->render("view/altaPokemon.html", $data);
+        die();
+    }
+    
 }
