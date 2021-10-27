@@ -11,7 +11,7 @@ class PokemonModel
     
     public function getPokemones()
     {
-        return $this->database->query("SELECT * FROM pokemon ");
+        return $this->database->query("SELECT * FROM pokemon ORDER BY numero ");
     }
     
     public function getBusquedaPokemones($filter)
